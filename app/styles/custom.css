@@ -1,0 +1,87 @@
+br { display: none; }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  padding: 0;
+ }
+
+.bs-example{
+    	margin: 20px;
+}
+pre.canto{
+  overflow: hidden;
+  max-width: 40ch;
+  text-align:left;
+}
+p.canto{
+  overflow: hidden;
+  max-width: 40ch;
+  text-align:left;
+}
+p.linenumber{
+  width: 100%;
+  overflow: hidden;
+  text-align:right;
+  padding:0;
+  background: #f2f2f2;
+}
+ 
+table tr td.canto
+{
+ text-align:right;
+ width: 82% ;
+ padding: 5px;
+}
+table tr td.linenumber
+{
+ text-align:right;
+ width: 18% ;
+ padding: 5px;
+}
+
+
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+.jumbotron {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 10% 0%;
+  padding: 200px 0 280px 0;
+  position: relative;
+}
+.jumbotron:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #322e40, #0c2f52);
+  /*background: linear-gradient(to left, #8b86a3, #322e40); */
+  opacity: 0.85; 
+}
+.jumbotron .block {
+  color: #E3E3E4;
+}
+.jumbotron .block h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 45px;
+  line-height: 60px;
+  letter-spacing: 10px;
+  padding-bottom: 45px;
+}
+.jumbotron .block p {
+  font-size: 23px;
+  line-height: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
