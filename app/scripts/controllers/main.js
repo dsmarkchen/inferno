@@ -10,28 +10,47 @@
 angular.module('infernoApp')
   .filter('split', function() {
    return function(input) {
-  var delimiter = /([,.;!-])/g;
+  var delimiter = /([!,.;-])/g;
+  var line_index = 0;
   var res = input.split(delimiter);
   var temp = "";
   var sum = "";
-  res.forEach(myfun);
+  var sum2 = "";
+  res.forEach(split_commas);
+
+  console.log("line_index:" + line_index);
   return sum;
-  function myfun(item) {
-    sum += item;
+
+  function split_that(item) {
+    if(item == "that" || item == "where" || item == "when"|| item == "which") { 
+        sum2 +="\n"
+        sum2 += item;
+        return;
+    }
+    sum2 += item;
+  }
+
+  function split_commas(item) {
     temp += item;
-   
-    var v = item.endsWith('!');
-    var w = item.endsWith('-') && sum.endsWith('--');
-    var x = item.endsWith(',');
-    var y = item.endsWith(';');
-    var z = item.endsWith('.'); 
-    if(v || w || x || y || z) {
-        if(temp.length < 10)
-            return;
+    if(item.length > 52) {
+        /* sum+='##NEED_SPLIT##'; */
+        var delimiter2 = /(that|where|which|when)/g;
+        var res2 = temp.split(delimiter2);
+        res2.forEach(split_that);
+        sum += sum2;
+        temp = "";
+        return;
+    }
+
+    sum += item; 
+    if(sum.endsWith('--') && item== "-" || item== ";" || item== "." || item=="!" || item==",") {
         sum += "\n";
         temp = "";
+    }
+
+
   }  
-}} }) 
+}}) 
   .controller('MainCtrl', function ($scope, $location) {
 
     $scope.txTotalSymbols = localStorage.getItem("totalSymbols");
