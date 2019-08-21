@@ -87,7 +87,7 @@ angular.module('infernoApp')
 
 {line: 85, text:" You are my master and my author, you-- the only one from whom my writing drew the noble style for which I have been honored."},
 
-{line: 88, text:" You see the beast that made me turn aside; help me, o famous sage, to stand against her, for she has made my blood and pulses shudder,”"},
+{line: 88, text:" You see the beast that made me turn aside; help me, o famous sage, to stand against her, for she has made my blood and pulses shudder,\""},
 
 
 {line: 91, text:"\"It is another path that you must take,\" he answered when he saw my tearfulness, \"if you would leave this savage wilderness;"}, 

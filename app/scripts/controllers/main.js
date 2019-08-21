@@ -10,7 +10,7 @@
 angular.module('infernoApp')
   .filter('split', function() {
    return function(input) {
-  var delimiter = /([!,.;-])/g;
+  var delimiter = /([!,.;?-])/g;
   var line_index = 0;
   var res = input.split(delimiter);
   var temp = "";
@@ -22,8 +22,8 @@ angular.module('infernoApp')
   return sum;
 
   function split_that(item) {
-    if(item == "that" || item == "where" || item == "when"|| item == "which") { 
-        sum2 +="\n"
+    if(item == "that" || item == "where" || item == "when" || item == "who" || item == "which") { 
+        sum2 +="\n "
         sum2 += item;
         return;
     }
@@ -34,7 +34,7 @@ angular.module('infernoApp')
     temp += item;
     if(item.length > 52) {
         /* sum+='##NEED_SPLIT##'; */
-        var delimiter2 = /(that|where|which|when)/g;
+        var delimiter2 = /(that|where|which|when|who)/g;
         var res2 = temp.split(delimiter2);
         res2.forEach(split_that);
         sum += sum2;
@@ -43,7 +43,7 @@ angular.module('infernoApp')
     }
 
     sum += item; 
-    if(sum.endsWith('--') && item== "-" || item== ";" || item== "." || item=="!" || item==",") {
+    if(sum.endsWith('--') && item== "-" || item== "?" || item== ";" || item== "." || item=="!" || item==",") {
         sum += "\n";
         temp = "";
     }
