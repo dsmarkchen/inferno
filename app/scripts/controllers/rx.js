@@ -18,7 +18,7 @@ angular.module('infernoApp')
        var counter = 0;
        var temp = [];
        $scope.cantoes = [];
-       $http.get('/inferno.txt').then(function (rsp) {
+       $http.get('https://dsmarkchen.github.io/inferno/inferno.txt').then(function (rsp) {
             
             $scope.inferno = rsp.data.split(/\r?\n/) ;
         
