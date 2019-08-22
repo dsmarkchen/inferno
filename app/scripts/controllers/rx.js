@@ -22,7 +22,10 @@ angular.module('infernoApp')
             
             $scope.inferno = rsp.data.split(/\r?\n/) ;
         
-            $scope.inferno.forEach($scope.buildone);    
+            $scope.inferno.forEach($scope.buildone); 
+            if(temp.length > 0) {   
+                $scope.cantoes.push({line: counter-1, text: temp.join('\n')}); 
+            }  
         });
 
         $scope.buildone = function(item, index) {
