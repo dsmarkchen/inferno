@@ -1,12 +1,15 @@
 <div class="container" tabindex="0">
-
-  <div class="row" ng-repeat="line in cantoes track by $index">
-       <div class="col-3">
-         <p class="line">    {{line.line + 1}} </p>
-       </div>
+  <div ng-repeat="linex in cantoes track by $index">
+      <div class="row">
+        <div class="col-3">
+            <p class="line">    {{linex.line + 1}} </p>
+        </div>
         <div class="col-9">
-             <pre >  {{line.text}} </pre>
-        </div>  
+           <div class="block">
+            <p class="canto" ng-bind-html='linex.text'></p>
+           </div>
+        </div>    
+      </div>
   </div>
 
   

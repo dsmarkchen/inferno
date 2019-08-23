@@ -18,21 +18,24 @@ angular.module('infernoApp')
        var counter = 0;
        var temp = [];
        $scope.cantoes = [];
-       $http.get('https://dsmarkchen.github.io/inferno/inferno.txt').then(function (rsp) {
+       var url = '/inferno.txt';
+       var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
+       $http.get(url2).then(function (rsp) {
             
             $scope.inferno = rsp.data.split(/\r?\n/) ;
         
             $scope.inferno.forEach($scope.buildone); 
             if(temp.length > 0) {   
-                $scope.cantoes.push({line: counter-1, text: temp.join('\n')}); 
+                $scope.cantoes.push({line: counter-1, text: temp.join('<br>')}); 
             }  
         });
 
         $scope.buildone = function(item, index) {
             if(item.trim().length > 0) {
-                temp.push(item.trim()); 
+                var res =item.replace(/--/g, "&#x2012;");
+                temp.push(res.trim()); 
                 if(temp.length==3) {
-                      $scope.cantoes.push({line: counter-2, text: temp.join('\n')});   
+                      $scope.cantoes.push({line: counter-2, text: temp.join('<br>')});   
                       temp = [];
                 }
                 counter ++;
