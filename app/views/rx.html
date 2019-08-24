@@ -1,14 +1,17 @@
 <div class="container">
-    <div class="row">
+  <div class="row">
     <div class="col-md-3 col-sm-12">
-<form>
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-search"></i></div>
-        <input type="text" class="form-control" placeholder="query: start, end" ng-model="myQuery">
-      </div>      
-    </div>
-  </form>
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                     <input type="text" class="form-control" placeholder="query: start, end" ng-model="myQuery">
+                </div>      
+            </div>
+        </form>
+
+        <button class="btn btn-secondary" ng-click="prev()"> prev</button>
+        <button class="btn btn-secondary" ng-click="next()"> next</button>
    </div>
     <div class="col-md-9 col-sm-12">
   <div ng-repeat="linex in cantoes | myCantoFilter: myQuery  track by $index ">
@@ -25,8 +28,8 @@
   </div>
 
 
-     </div>
-    </div>
+  </div>
+ </div>
 </div>
 
 

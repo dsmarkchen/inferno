@@ -25,10 +25,17 @@ angular.module('infernoApp')
              }
    })
  .controller('RxCtrl', function ($scope, $http) {
+       $scope.isNullOrEmpty = function (value) {
+                return value == null || value === "";
+       }
 
        $scope.rxTotalSymbols= 60;
        $scope.rxTotalLHs= 1;
-       $scope.myQuery = "";
+       $scope.myQuery= localStorage.getItem("myQuery");
+       if($scope.isNullOrEmpty($scope.myQuery)) {
+            $scope.myQuery = "1:1,25";
+            localStorage.setItem("myQuery", $scope.myQuery);
+        }
  
        localStorage.setItem("rxTotalSymbols", $scope.rxTotalSymbols);
        localStorage.setItem("rxTotalLHs", $scope.rxTotalLHs);
@@ -47,6 +54,34 @@ angular.module('infernoApp')
                 $scope.cantoes.push({line: counter-1, text: temp.join('<br>')}); 
             }  
         });
+
+        var step = 3;
+        $scope.move = function() {
+            var query = $scope.myQuery;
+             if (query == "") return ;
+             var que = query.split(/[,:]/);
+             var sec = que[0].trim();
+             var start = parseInt(que[1].trim(), 10);
+             var end = parseInt(que[2].trim(), 10);
+
+             start += step;
+             end += step
+            
+             if(start < 0) start = 1;
+            
+             $scope.myQuery = sec + ":" + start.toString() + "," + end.toString();
+             localStorage.setItem("myQuery", $scope.myQuery);
+         }
+
+        $scope.prev = function() {
+            step = -3;
+            $scope.move();
+        }
+        $scope.next = function() {
+            step = 3;
+            $scope.move();
+
+        }    
 
         $scope.buildone = function(item, index) {
             if(item.trim().length > 0) {

@@ -13,6 +13,7 @@ pre.canto{
   margin-bottom:0em;
 }
 p.canto{
+  text-align:left;
     color: #4a5256;
     font-family: RobotoDraft,Roboto,Helvetica,Arial,sans-serif;
 
