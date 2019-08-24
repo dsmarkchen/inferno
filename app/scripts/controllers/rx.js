@@ -13,11 +13,11 @@ angular.module('infernoApp')
                 var filtered = [];
                 if (query == "") return items;
                 var que = query.split(/[,:]/);
-                var name = que[0];
+                var sec = que[0];
                 var start = que[1];
                 var end = que[2];
                 angular.forEach(items, function(item) {
-                    if(item.name == name && (item.line >= start && item.line < end)) {
+                    if(item.name.trim()  == sec.trim() && (item.line >= start && item.line < end)) {
                         filtered.push(item);
                     }
                 });
