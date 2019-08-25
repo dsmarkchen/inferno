@@ -17,7 +17,7 @@ angular.module('infernoApp')
                 var start = que[1];
                 var end = que[2];
                 angular.forEach(items, function(item) {
-                    if(item.name.trim()  == sec.trim() && (item.line >= start && item.line < end)) {
+                    if((item.name != null) && item.name.trim()  == sec.trim() && (item.line >= start && item.line < end)) {
                         filtered.push(item);
                     }
                 });
