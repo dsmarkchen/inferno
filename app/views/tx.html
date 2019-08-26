@@ -1,4 +1,12 @@
 <div class="container">
+   <table class="table table-striped">
+   <tr ng-repeat="comment in comments">
+        <td> {{comment.line}} </td>
+        <td> {{comment.name}} </td>
+        <td> {{comment.comment}} <td>
+   </tr>
+   </table>
+
    <form>
       <div class="row">
         <div class="col-md-12">
@@ -7,6 +15,7 @@
       </div>
    </form>
    <br />
+   
 
    <b>Statistics:</b><br />
 
