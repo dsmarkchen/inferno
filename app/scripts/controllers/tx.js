@@ -20,6 +20,10 @@ angular.module('infernoApp')
 { name: "impede", line: 34, comment: "prevent" },
 { name: "ascent", line: 34, comment: "upward movement" },
 
+
+{ name: "cowardice", line: 1, comment: "lack of courage to face difficulty" },
+{ name: "pallor", line: 1, comment: "pale" },
+
 ];
 
 
