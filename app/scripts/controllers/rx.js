@@ -64,10 +64,37 @@ angular.module('infernoApp')
              var start = parseInt(que[1].trim(), 10);
              var end = parseInt(que[2].trim(), 10);
 
-             start += step;
-             end += step
-            
-             if(start < 0) start = 1;
+             var len = end-start;
+             if(step > 0) {
+             start = start + len  + 1 ;
+             end = end + len + 1;
+                 var x = start % 3;
+                 if(x == 0) {
+                    start +=1;
+                    end +=1;
+                 }
+                 if(x == 2) {
+                     start -= 1;
+                    end -= 1;
+                }
+              }
+             if(step < 0) {
+
+                 start = start - len -1;
+                end = end - len -1;
+ 
+                 if(x == 0) {
+                    start +=1;
+                    end +=1;
+                 }
+                 if(x == 2) {
+                     start -= 1;
+                    end -= 1;
+                }
+              }
+           
+
+              if(start < 0) start = 1;
             
              $scope.myQuery = sec + ":" + start.toString() + "," + end.toString();
              localStorage.setItem("myQuery", $scope.myQuery);
