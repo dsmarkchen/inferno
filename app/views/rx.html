@@ -28,6 +28,11 @@
 
   </div>
  </div>
+ <div class="myWrapper"> 
+   <div id="myTooltips" ng-repeat="comment in comments  | conto: myQuery track by $index">
+      <i data-toggle="tooltip" title={{comment.comment}}>{{comment.name}}</i>
+    </div>
+  </div>
 </div>
 
 

@@ -58,7 +58,7 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> Inferno</p>
+        <p><span class="glyphicon glyphicon-heart"></span> ~~ Inferno ~~</p>
       </div>
     </div>
 
@@ -99,6 +99,13 @@
 
  <script type="text/javascript">
         angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+
+      $(document).ready(function(){
+//           $("#myTooltips p").tooltip({container: ".wrapper"}); 
+           $("#myTooltips i").tooltip({
+            container: ".myWrapper"
+           });
+    });
     </script>
 
 </body>
