@@ -42,6 +42,13 @@ angular.module('infernoApp')
     }
   })
   .controller('RxCtrl', function ($scope, $http, $filter) {
+
+$scope.elements = [
+    {content: 'one'},
+    {content: '<b>two</b>'},
+    {content: '<img src="https://a.wattpad.com/useravatar/Chaton-ambulant.128.910704.jpg"/>'}
+  ];
+
        $scope.isNullOrEmpty = function (value) {
                 return value == null || value === "";
        }

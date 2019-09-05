@@ -8,7 +8,7 @@
  * Controller of the infernoApp
  */
 angular.module('infernoApp')
-  .filter('split', function() {
+ .filter('split', function() {
    return function(input) {
   var delimiter = /([!,.;?-])/g;
   var line_index = 0;
