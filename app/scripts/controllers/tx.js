@@ -28,6 +28,8 @@ angular.module('infernoApp')
         { conto:1,line: 34, name: "impede", comment: "prevent" },
         { conto:1,line: 34, name: "ascent",comment: "upward movement" },
 
+        { conto:1,line: 88, name: "shudder",comment: "tremble" },
+
 
         { name: "cowardice",conto:9, line: 1, comment: "lack of courage to face difficulty" },
         { name: "pallor", conto:9,line: 1, comment: "pale" },
