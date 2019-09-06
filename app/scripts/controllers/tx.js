@@ -11,18 +11,18 @@ angular.module('infernoApp')
   .controller('TxCtrl', function ($scope, fileReader) {
 
     $scope.comments = [
-{ name: "stray", line: 1, comment: "deviate" },
-{ name: "savage", line: 4, comment: "wild" },
-{ name: "ray", line: 16, comment: "a narrow beam of light" },
-{ name: "fugitive", line: 25, comment: "straying" },
-{ name: "lithe", line: 31, comment: "flexible" },
-{ name: "hide", line: 31, comment: "n. skin" },
-{ name: "impede", line: 34, comment: "prevent" },
-{ name: "ascent", line: 34, comment: "upward movement" },
+{ name: "stray", sec: 1, line: 1, comment: "deviate" },
+{ name: "savage", sec: 1, line: 4, comment: "wild" },
+{ name: "ray", sec: 1,line: 16, comment: "a narrow beam of light" },
+{ name: "fugitive", sec: 1,line: 25, comment: "straying" },
+{ name: "lithe", sec: 1,line: 31, comment: "flexible" },
+{ name: "hide", sec: 1,line: 31, comment: "n. skin" },
+{ name: "impede", sec: 1,line: 34, comment: "prevent" },
+{ name: "ascent", sec: 1,line: 34, comment: "upward movement" },
 
 
-{ name: "cowardice", line: 1, comment: "lack of courage to face difficulty" },
-{ name: "pallor", line: 1, comment: "pale" },
+{ name: "cowardice", sec: 1,line: 1, comment: "lack of courage to face difficulty" },
+{ name: "pallor", sec: 1,line: 1, comment: "pale" },
 
 ];
 

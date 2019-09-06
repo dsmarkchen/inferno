@@ -45,7 +45,7 @@ angular.module('infernoApp')
        var name = "";
        var url = '/inferno.txt';
        var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
-       $http.get(url2).then(function (rsp) {
+       $http.get(url).then(function (rsp) {
             
             $scope.inferno = rsp.data.split(/\r?\n/) ;
         
@@ -80,7 +80,7 @@ angular.module('infernoApp')
               }
              if(step < 0) {
 
-                 start = start - len -1;
+                start = start - len -1;
                 end = end - len -1;
  
                  if(x == 0) {
@@ -90,7 +90,7 @@ angular.module('infernoApp')
                  if(x == 2) {
                      start -= 1;
                     end -= 1;
-                }
+                 }
               }
            
 
