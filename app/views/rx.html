@@ -3,17 +3,37 @@
       <div class="col-md-3 col-sm-12">
 
         
-        <form>
-            <div class="form-group">
-                <div class="input-group">
-                     <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                     <input type="text" class="form-control" placeholder="query: start, end" ng-model="myQuery">
-                </div>      
-            </div>
-        </form>
+        <div class="row">
+          <div class="col">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                         <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                         <input type="text" class="form-control" placeholder="query: start, end" ng-model="myQuery">
+                    </div>      
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+ 
+            <button class="btn btn-secondary" ng-click="prev()"> prev</button>
+            <button class="btn btn-secondary" ng-click="next()"> next</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <br><br>
+            <ul class="list-group list-group-flush">
 
-        <button class="btn btn-secondary" ng-click="prev()"> prev</button>
-        <button class="btn btn-secondary" ng-click="next()"> next</button>
+              <li class="list-group-item" ng-repeat="comment in comments  | conto: myQuery track by $index">
+                 <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> 
+              </li>
+            </ul>
+          </div>
+        </div>
+
      </div>
      <div class="col-md-9 col-sm-12">
        <div ng-repeat="linex in cantoes | myCantoFilter: myQuery  track by $index ">
@@ -29,11 +49,6 @@
 
 
     </div>
- </div>
- <div class="row">
-   <div ng-repeat="comment in comments  | conto: myQuery track by $index">
-          <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> <br>
-   </div>
  </div>
 </div>
 
