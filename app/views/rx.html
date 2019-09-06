@@ -22,18 +22,6 @@
             <button class="btn btn-secondary" ng-click="next()"> next</button>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <br><br>
-            <ul class="list-group list-group-flush">
-
-              <li class="list-group-item" ng-repeat="comment in comments  | conto: myQuery track by $index">
-                 <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> 
-              </li>
-            </ul>
-          </div>
-        </div>
-
      </div>
      <div class="col-md-9 col-sm-12">
        <div ng-repeat="linex in cantoes | myCantoFilter: myQuery  track by $index ">
@@ -50,6 +38,20 @@
 
     </div>
  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <br><br>
+      <ul class="list-group list-group-flush">
+
+        <li class="list-group-item" ng-repeat="comment in comments  | conto: myQuery track by $index">
+           <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> 
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
 
