@@ -24,10 +24,42 @@ angular.module('infernoApp')
                 return filtered;
              }
    })
- .controller('RxCtrl', function ($scope, $http) {
+  .filter('conto', function() {
+    return function(comments, query) {
+        var filtered = [];
+        if (query == "") return filtered;
+        var que = query.split(/[,:]/);
+        var conto = que[0];
+        var start = que[1];
+        var end = que[2];
+        angular.forEach(comments, function(item) {
+            if(item.conto == conto && (item.line >= start && item.line <= end))
+                filtered.push(item);
+        });
+
+        //then we return the filtered items array
+        return filtered;
+    }
+  })
+  .controller('RxCtrl', function ($scope, $http, $filter) {
+
+$scope.elements = [
+    {content: 'one'},
+    {content: '<b>two</b>'},
+    {content: '<img src="https://a.wattpad.com/useravatar/Chaton-ambulant.128.910704.jpg"/>'}
+  ];
+
        $scope.isNullOrEmpty = function (value) {
                 return value == null || value === "";
        }
+   
+       $scope.comments = JSON.parse(localStorage.getItem("myComments")) || [];
+
+     
+       $scope.getFilteredComments = function() {
+           return $filter('conto')($scope.comments, 1, 1, 9);
+        }
+
 
        $scope.rxTotalSymbols= 60;
        $scope.rxTotalLHs= 1;
@@ -141,3 +173,4 @@ angular.module('infernoApp')
         }
     
   });
+

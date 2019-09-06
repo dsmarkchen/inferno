@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 col-sm-12">
+      <div class="col-md-3 col-sm-12">
+
+        
         <form>
             <div class="form-group">
                 <div class="input-group">
@@ -12,21 +14,26 @@
 
         <button class="btn btn-secondary" ng-click="prev()"> prev</button>
         <button class="btn btn-secondary" ng-click="next()"> next</button>
+     </div>
+     <div class="col-md-9 col-sm-12">
+       <div ng-repeat="linex in cantoes | myCantoFilter: myQuery  track by $index ">
+            <div class="row" ng-if='linex.visible'>
+              <div class="col-2" style="margin:0px 0px 0px 0px;padding:0px 0px; border: 1px solid #f8f9fa;">
+                  <p class="line" style="margin:0px 0px 0px 0px;padding:0px 0px;background-color:#f8f9fa;">{{linex.name}}:{{linex.line}} </p>
+              </div>
+              <div class="col-10" >
+                  <p class="canto" style="padding:0px 15px;" ng-bind-html='linex.text'></p>
+              </div>    
+            </div>
+       </div>
+
+
+    </div>
+ </div>
+ <div class="row">
+   <div ng-repeat="comment in comments  | conto: myQuery track by $index">
+          <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> <br>
    </div>
-    <div class="col-md-9 col-sm-12">
-  <div ng-repeat="linex in cantoes | myCantoFilter: myQuery  track by $index ">
-      <div class="row" ng-if='linex.visible'>
-        <div class="col-2" style="margin:0px 0px 0px 0px;padding:0px 0px; border: 1px solid #f8f9fa;">
-            <p class="line" style="margin:0px 0px 0px 0px;padding:0px 0px;background-color:#f8f9fa;">{{linex.name}}:{{linex.line}} </p>
-        </div>
-        <div class="col-10" >
-            <p class="canto" style="padding:0px 15px;" ng-bind-html='linex.text'></p>
-        </div>    
-      </div>
-  </div>
-
-
-  </div>
  </div>
 </div>
 

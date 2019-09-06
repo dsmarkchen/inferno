@@ -1,12 +1,28 @@
 <div class="container">
-   <table class="table table-striped">
-   <tr ng-repeat="comment in comments">
-        <td> {{comment.sec}} </td>
+   <table>
+   <tr ng-repeat="comment in comments track by $index">
+        <td> {{comment.conto}} </td>
         <td> {{comment.line}} </td>
         <td> {{comment.name}} </td>
         <td> {{comment.comment}} <td>
    </tr>
    </table>
+</div>
+
+ <div class="form-group" >
+            <label for="addComment">Conto</label>
+             <input ng-model="addConto"> 
+             <label for="addComment">Number </label>
+             <input ng-model="addLine"> <br/>
+             <label for="addComment">Name </label>
+             <input ng-model="addName"> 
+              <label for="addComment">Comment</label>
+             <input ng-model="addNote">
+             <button ng-click="addComment()" class="button button-primary">Add</button> 
+  </div>
+
+
+
 
    <form>
       <div class="row">
@@ -17,7 +33,7 @@
    </form>
    <br />
    
-
+<!--
    <b>Statistics:</b><br />
 
     <table class="table table-striped">
@@ -45,3 +61,4 @@
    <b>Progress:</b>
   <progress value="{{progress}}"></progress>
 </div>
+-->

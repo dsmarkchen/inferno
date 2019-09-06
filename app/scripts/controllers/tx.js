@@ -10,21 +10,36 @@
 angular.module('infernoApp')
   .controller('TxCtrl', function ($scope, fileReader) {
 
-    $scope.comments = [
-{ name: "stray", sec: 1, line: 1, comment: "deviate" },
-{ name: "savage", sec: 1, line: 4, comment: "wild" },
-{ name: "ray", sec: 1,line: 16, comment: "a narrow beam of light" },
-{ name: "fugitive", sec: 1,line: 25, comment: "straying" },
-{ name: "lithe", sec: 1,line: 31, comment: "flexible" },
-{ name: "hide", sec: 1,line: 31, comment: "n. skin" },
-{ name: "impede", sec: 1,line: 34, comment: "prevent" },
-{ name: "ascent", sec: 1,line: 34, comment: "upward movement" },
+   $scope.isNullOrEmpty = function (value) {
+        return value == null || value === "";
+   }
 
 
-{ name: "cowardice", sec: 1,line: 1, comment: "lack of courage to face difficulty" },
-{ name: "pallor", sec: 1,line: 1, comment: "pale" },
+   $scope.comments = null; //JSON.parse(localStorage.getItem("myComments")) || [];
+   if($scope.isNullOrEmpty($scope.comments)) {
+        $scope.comments = [
+        {  conto:1, line: 1, name: "stray", comment: "deviate" },
+        {  conto:1, line: 4, name: "savage", comment: "wild" },
+        {  conto:1, line: 16, name: "ray", comment: "a narrow beam of light" },
 
-];
+        { name: "fugitive", conto:1,line: 25, comment: "straying" },
+        { name: "lithe", conto:1,line: 31, comment: "flexible" },
+        { name: "hide", conto:1,line: 31, comment: "n. skin" },
+        { conto:1,line: 34, name: "impede", comment: "prevent" },
+        { conto:1,line: 34, name: "ascent",comment: "upward movement" },
+
+        { conto:1,line: 88, name: "shudder",comment: "tremble" },
+
+
+        { name: "cowardice",conto:9, line: 1, comment: "lack of courage to face difficulty" },
+        { name: "pallor", conto:9,line: 1, comment: "pale" },
+
+        ];
+
+        localStorage.setItem("myComments", JSON.stringify($scope.comments));
+    }
+   $scope.comments = JSON.parse(localStorage.getItem("myComments")) || [];
+
 
 
     $scope.visible = false;
@@ -51,6 +66,16 @@ angular.module('infernoApp')
         }
         return a;
    };
+
+  $scope.addComment = function() {
+    var data = { 
+        conto: $scope.addConto, 
+        line:$scope.addLine,
+        name: $scope.addName,
+        comment: $scope.addNote
+    };
+    $scope.comments.push(data);  
+  }   
 
   $scope.getFile = function () {
         $scope.progress = 0;
