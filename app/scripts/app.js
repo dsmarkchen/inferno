@@ -22,11 +22,17 @@ angular
       scope.displayTooltip = false;
       
       /* Methods */
-      
-      scope.updateTootipPosition = function(top, left) {
-/*         var target  = $( this );
+      scope.updateTooltipOpacity = function(opacity) {
+          tooltip.css({
+            opacity: opacity,
+            'max-width':340
+          });
+      };
+      scope.updateTooltipPosition = function(top, left) {
+         var target  = $( this );
+         var pos_left = target.offset().left + (target.outerWidth()/2);
 
-         if( $( window ).width() < tooltip.outerWidth() * 1.5 )
+/*         if( $( window ).width() < tooltip.outerWidth() * 1.5 )
                 tooltip.css( 'max-width', $( window ).width() / 2 );
          else
                 tooltip.css( 'max-width', 340 );
@@ -95,7 +101,8 @@ angular
       });
       
       element.on('mousemove', function(event) {
-        scope.updateTootipPosition(event.clientY + 15, event.clientX + 15);
+        scope.updateTooltipOpacity(0.5);
+        scope.updateTooltipPosition(event.clientY -5, event.clientX + 5);
       });
       
       element.on('mouseleave', function() {
