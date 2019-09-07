@@ -77,7 +77,7 @@ $scope.elements = [
        var name = "";
        var url = '/inferno.txt';
        var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
-       $http.get(url).then(function (rsp) {
+       $http.get(url2).then(function (rsp) {
             
             $scope.inferno = rsp.data.split(/\r?\n/) ;
         
