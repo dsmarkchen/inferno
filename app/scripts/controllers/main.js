@@ -51,7 +51,10 @@ angular.module('infernoApp')
 
   }  
 }}) 
-  .controller('MainCtrl', function ($scope, $location) {
+  .controller('MainCtrl', ['$window', '$scope', '$location', function ($window, $scope, $location) {
+
+    var mainCtrl = this;
+	mainCtrl.test = 'testing mainController';
 
     $scope.txTotalSymbols = localStorage.getItem("totalSymbols");
     $scope.txTotalLHs = localStorage.getItem("totalLHs");
@@ -82,4 +85,4 @@ angular.module('infernoApp')
     }
     $scope.ie = getIEVersion(); 
     
-  });
+  }]);

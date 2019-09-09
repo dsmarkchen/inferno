@@ -8,6 +8,33 @@
  * Controller of the infernoApp
  */
 angular.module('infernoApp')
+    .directive('xelement', function ($timeout) {
+      return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+          element.ready(function () {
+            var height,
+                width;
+            $timeout(function () {
+              height  = element[0].offsetHeight;
+              width  = element[0].offsetWidth;
+              if (attrs.key) {
+                scope[attrs.key] = {
+                  height: height,
+                  width: width
+                };
+                return;
+              }
+
+              scope.elementSize = {
+                height: height,
+                width: width
+              };
+            });
+          });
+        }
+      };
+    })
   .filter('myCantoFilter', function() {
             return function(items, query ) {
                 var filtered = [];
@@ -43,11 +70,7 @@ angular.module('infernoApp')
   })
   .controller('RxCtrl', function ($scope, $http, $filter) {
 
-$scope.elements = [
-    {content: 'one'},
-    {content: '<b>two</b>'},
-    {content: '<img src="https://a.wattpad.com/useravatar/Chaton-ambulant.128.910704.jpg"/>'}
-  ];
+
 
        $scope.isNullOrEmpty = function (value) {
                 return value == null || value === "";
