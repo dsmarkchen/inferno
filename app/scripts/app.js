@@ -221,6 +221,11 @@ angular
         controller: 'RxCtrl',
         controllerAs: 'rx'
       })
+       .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
       .otherwise({
         redirectTo: '/'
       });

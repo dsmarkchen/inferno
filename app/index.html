@@ -60,12 +60,15 @@
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
-           <li class="nav-item" ng-class="{ active: isActive('/rx')}">
-              <a class="nav-link" ng-href="#!rx">Text</a>
-            </li>
-            <li class="nav-item" ng-class="{ active: isActive('/tx')}">
-              <a class="nav-link" href="#!tx">Notes</a>
-            </li>
+	   <li class="nav-item" ng-class="{ active: isActive('/rx')}">
+	      <a class="nav-link" ng-href="#!rx">Text</a>
+	    </li>
+	    <li class="nav-item" ng-class="{ active: isActive('/tx')}">
+	      <a class="nav-link" href="#!tx">Notes</a>
+	    </li>
+	     <li class="nav-item" ng-class="{ active: isActive('/about')}">
+	      <a class="nav-link" href="#!about">About</a>
+	    </li>
    
     </ul>
   </div>  
@@ -120,6 +123,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/rx.js"></script>
         <script src="scripts/controllers/tx.js"></script>
         <!-- endbuild -->

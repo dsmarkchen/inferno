@@ -70,10 +70,8 @@ angular.module('infernoApp')
   })
   .controller('RxCtrl', function ($scope, $http, $filter) {
 
-
-
        $scope.isNullOrEmpty = function (value) {
-                return value == null || value === "";
+          return value == null || value === "";
        }
    
        $scope.comments = JSON.parse(localStorage.getItem("myComments")) || [];
@@ -101,10 +99,11 @@ angular.module('infernoApp')
        var url = '/inferno.txt';
        var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
        $http.get(url2).then(function (rsp) {
-            
+            var usingBreaker = true; 
             $scope.inferno = rsp.data.split(/\r?\n/) ;
-        
-            $scope.inferno.forEach($scope.buildone); 
+            for(var i = 0; i < $scope.inferno.length; i++) {
+               $scope.buildone($scope.inferno[i], i, usingBreaker);
+            } 
             if(temp.length > 0) {   
                 $scope.cantoes.push({line: counter-1, text: temp.join('<br>')}); 
             }  
@@ -165,7 +164,11 @@ angular.module('infernoApp')
 
         }    
 
-        $scope.buildone = function(item, index) {
+        $scope.buildone = function(item, index, useBreaker) {
+            var withBreaker = ' ';
+            if(useBreaker) {
+                withBreaker='<br>';
+            }
             if(item.trim().length > 0) {
                 var exp = /^##/;
                 if (exp.test(item)) {
@@ -173,7 +176,7 @@ angular.module('infernoApp')
                          $scope.cantoes.push({
                               name: name,
                               line: counter, 
-                              text: temp.join('<br>'), 
+                              text: temp.join(withBreaker), 
                               visible: true});   
                          temp = [];
                    }     
@@ -188,7 +191,7 @@ angular.module('infernoApp')
                       $scope.cantoes.push({
                             name: name,
                             line: counter-2, 
-                            text: temp.join('<br>'), 
+                            text: temp.join(withBreaker), 
                             visible: true});   
                       temp = [];
                 }
