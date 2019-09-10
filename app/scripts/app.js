@@ -62,7 +62,7 @@ angular
       };
       scope.updateTooltipPosition = function(top, left) {
          var target  = $( this );
-         var pos_left = target.offset().left + (target.outerWidth()/2);
+/*         var pos_left = target.offset().left + (target.outerWidth()/2); */
 
 /*         if( $( window ).width() < tooltip.outerWidth() * 1.5 )
                 tooltip.css( 'max-width', $( window ).width() / 2 );
@@ -134,7 +134,8 @@ angular
       
       element.on('mousemove', function(event) {
         scope.updateTooltipOpacity(0.5);
-        scope.updateTooltipPosition(event.clientY -5, event.clientX + 5);
+        scope.updateTooltipPosition(event.clientY - 20, event.clientX + 5);
+//        scope.updateTooltipPosition(event.clientY -5, event.clientX + 5);
       });
       
       element.on('mouseleave', function() {
