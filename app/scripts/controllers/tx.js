@@ -8,11 +8,60 @@
  * Controller of the infernoApp
  */
 angular.module('infernoApp')
-  .controller('TxCtrl', function ($scope, fileReader) {
+  .controller('TxCtrl', function ($http, $scope, fileReader) {
 
    $scope.isNullOrEmpty = function (value) {
         return value == null || value === "";
    }
+   var conto;
+   $scope.notes = [];
+   $scope.buildone = function(item, index, useBreaker) {
+      var withBreaker = ' ';
+      if(useBreaker) {
+            withBreaker='<br>';
+      }
+      var name ;
+      var line;
+      var text;
+      var counter;
+      if(item.trim().length > 0) {
+            var exp = /^##/;
+            item = item.replace(/‘/g, '&apos;');
+            if (exp.test(item)) {
+                conto = item.replace(/^## /, "");
+            }
+            var exp2 = /\d+-\d+/;
+            if(exp2.test(item)) {
+                var key = item.match(exp2);
+                var line = item.match(/^\d+/);
+                var res = item.replace(exp2, "");
+                
+                $scope.notes.push( {
+                    conto: conto,
+                    line: parseInt(line[0].trim(), 10),
+                    name: key[0],
+                    comment: item 
+                })
+            }
+            
+     }     
+
+    };
+ 
+   var url = '/notes.txt';
+   var url2 = 'https://dsmarkchen.github.io/inferno/notes.txt';
+   $http.get(url2).then(function (rsp) {
+        var usingBreaker = true; 
+        $scope.rawnotes = rsp.data.split(/\r?\n/) ;
+        for(var i = 0; i < $scope.rawnotes.length; i++) {
+           $scope.buildone($scope.rawnotes[i], i, usingBreaker);
+        } 
+
+        localStorage.setItem("myComments", JSON.stringify($scope.notes));
+
+        $scope.comments = JSON.parse(localStorage.getItem("myComments")) || []; 
+    });
+
 
 
    $scope.comments = null; //JSON.parse(localStorage.getItem("myComments")) || [];
@@ -84,7 +133,7 @@ angular.module('infernoApp')
 
         ];
 
-        localStorage.setItem("myComments", JSON.stringify($scope.comments));
+        localStorage.setItem("myComments", JSON.stringify($scope.notes));
     }
    $scope.comments = JSON.parse(localStorage.getItem("myComments")) || [];
 
