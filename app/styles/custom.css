@@ -6,7 +6,41 @@
   background: red;
   margin: 10px;
 }
+.sss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 2.5rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
 
+  &:hover {
+    color: #fff;
+
+    .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -150%);
+    }
+  }
+
+  &:active {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5) inset;
+  }
+
+  i {
+    position: relative;
+    top: 1px;
+  }
+}
+ 
 .tooltip
 {
   position: absolute;
@@ -14,7 +48,7 @@
   width: auto;
   height: auto;
   padding: 5px;
-  color: white;
+  color: yellow;
   background: black;
   z-index: 5000;
 }
@@ -22,8 +56,12 @@
 #tooltip
 {
     text-align: center;
-    color: #fff;
-    background: #6b8048;
+    color: white;
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 16px;
+    line-height: 40px;
+
+    background: #6c757d;
     position: absolute;
     z-index: 100;
     padding: 15px;
@@ -35,7 +73,7 @@
         height: 0;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-top: 10px solid #6b8048;
+        border-top: 10px solid #6c757d;
         content: '';
         position: absolute;
         left: 50%;

@@ -52,7 +52,7 @@
       <ul class="list-group list-group-flush">
 
         <li class="list-group-item" ng-repeat="comment in comments  | conto: myQuery track by $index">
-           <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> 
+           <i class="fa fa-caret-right" sytle="height:80px" tooltip tooltip-content="comment.comment"> {{comment.name}} </i>
         </li>
       </ul>
     </div>

@@ -133,7 +133,7 @@ angular
       });
       
       element.on('mousemove', function(event) {
-        scope.updateTooltipOpacity(0.5);
+        scope.updateTooltipOpacity(.9);
         scope.updateTooltipPosition(event.clientY - 20, event.clientX + 5);
 //        scope.updateTooltipPosition(event.clientY -5, event.clientX + 5);
       });
