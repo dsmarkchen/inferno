@@ -12,27 +12,33 @@
 
 
 <div class="container"> 
-<p> <strong> Summary </strong> </p>
-<table class="table table-striped">
-  <tr>
-    <th> </th>
-    <th> Tx</th>
-    <th> Rx</th>
-    <th> Percentage</th>
-  </tr>
 
-  <tr>
-    <td>   symbols </td>
-    <td>{{txTotalSymbols}}  </td>
-    <td>{{rxTotalSymbols}}  </td>
-    <td>{{rxTotalSymbols /txTotalSymbols * 100 | number : 2}}  </td>
-  </tr>
-  <tr><td>   sequences </td>
-    <td> {{txTotalLHs}} </td>
-    <td> {{rxTotalLHs}} </td>
-    <td> {{rxTotalLHs/txTotalLHs * 100 | number : 2}} </td>
-  </tr>    
-</table>
+  <p> <strong> Summary </strong> </p>
+  <table class="table table-striped">
+    <tr>
+      <th> </th>
+      <th> Tx</th>
+      <th> Rx</th>
+      <th> Percentage</th>
+    </tr>
+
+    <tr>
+      <td>   symbols </td>
+      <td>{{txTotalSymbols}}  </td>
+      <td>{{rxTotalSymbols}}  </td>
+      <td>{{rxTotalSymbols /txTotalSymbols * 100 | number : 2}}  </td>
+    </tr>
+    <tr><td>   sequences </td>
+      <td> {{txTotalLHs}} </td>
+      <td> {{rxTotalLHs}} </td>
+      <td> {{rxTotalLHs/txTotalLHs * 100 | number : 2}} </td>
+    </tr>    
+  </table>
+
+  <div xwindow>
+        <p ng-if="width > 320" >The device window is: [{{width}}, {{height}}].</p>
+  </div>
+
 </div>
 
 

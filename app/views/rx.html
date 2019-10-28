@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-3 col-sm-12">
+      <div class="col-md-2 col-sm-12">
 
         
         <div class="row">
@@ -23,14 +23,22 @@
           </div>
         </div>
      </div>
-     <div class="col-md-9 col-sm-12">
-       <div ng-repeat="linex in cantoes | myCantoFilter: myQuery  track by $index ">
-            <div class="row" ng-if='linex.visible'>
-              <div class="col-2" style="margin:0px 0px 0px 0px;padding:0px 0px; border: 1px solid #f8f9fa;">
-                  <p class="line" style="margin:0px 0px 0px 0px;padding:0px 0px;background-color:#f8f9fa;">{{linex.name}}:{{linex.line}} </p>
+     <div class="col-md-10 col-sm-12">
+
+
+       <div ng-repeat="canto in cantoes | myCantoFilter: myQuery  track by $index ">
+            <div class="row" ng-if='canto.visible'>
+              <div class="col-1" style="margin:0px 0px 0px 0px;padding:0px 0px; border: 1px solid #f8f9fa;">
+                  <p class="line" style="margin:0px 0px 0px 0px;padding:0px 0px;background-color:#f8f9fa;">{{canto.name}}:{{canto.line}} </p>
               </div>
-              <div class="col-10" >
-                  <p class="canto" style="padding:0px 15px;" ng-bind-html='linex.text'></p>
+              <div class="col-11" >
+             <!--
+                  <div xelement>
+                    <p ng-if="elementSize.width > 100 && $index == 0" >The element width: {{elementSize.width}}.</p>
+                  </div>
+              -->
+
+                  <p class="canto" style="padding:0px 15px;" ng-bind-html='canto.text'></p>
               </div>    
             </div>
        </div>
@@ -46,7 +54,7 @@
       <ul class="list-group list-group-flush">
 
         <li class="list-group-item" ng-repeat="comment in comments  | conto: myQuery track by $index">
-           <strong tooltip tooltip-content="comment.comment">{{comment.name}}</strong> 
+           <i class="fa fa-caret-right" sytle="height:80px" tooltip tooltip-content="comment.comment"> {{comment.name}} </i>
         </li>
       </ul>
     </div>

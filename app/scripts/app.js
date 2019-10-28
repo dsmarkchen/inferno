@@ -9,6 +9,38 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+.directive('xwindow', ['$window', function ($window) {
+     return {
+        link: link,
+        restrict: 'A'           
+     };
+     function link(scope, element, attrs){
+        scope.width = $window.innerWidth;
+        scope.height = $window.innerHeight;
+
+            function onResize(){
+                console.log($window.innerWidth);
+                // uncomment for only fire when $window.innerWidth change   
+                if (scope.width !== $window.innerWidth)
+                {
+                    scope.width = $window.innerWidth;
+                    scope.$digest();
+                }
+                if (scope.height!== $window.innerHeight)
+                {
+                    scope.height= $window.innerHeight;
+                    scope.$digest();
+                }
+             };
+
+            function cleanUp() {
+                angular.element($window).off('resize', onResize);
+            }
+
+            angular.element($window).on('resize', onResize);
+            scope.$on('$destroy', cleanUp);
+     }    
+ }])
 .directive('tooltip', function($compile, $sce) {
   return {
     restrict: 'A',
@@ -30,7 +62,7 @@ angular
       };
       scope.updateTooltipPosition = function(top, left) {
          var target  = $( this );
-         var pos_left = target.offset().left + (target.outerWidth()/2);
+/*         var pos_left = target.offset().left + (target.outerWidth()/2); */
 
 /*         if( $( window ).width() < tooltip.outerWidth() * 1.5 )
                 tooltip.css( 'max-width', $( window ).width() / 2 );
@@ -101,8 +133,9 @@ angular
       });
       
       element.on('mousemove', function(event) {
-        scope.updateTooltipOpacity(0.5);
-        scope.updateTooltipPosition(event.clientY -5, event.clientX + 5);
+        scope.updateTooltipOpacity(.9);
+        scope.updateTooltipPosition(event.clientY - 20, event.clientX + 5);
+//        scope.updateTooltipPosition(event.clientY -5, event.clientX + 5);
       });
       
       element.on('mouseleave', function() {
@@ -188,6 +221,11 @@ angular
         templateUrl: 'views/rx.html',
         controller: 'RxCtrl',
         controllerAs: 'rx'
+      })
+       .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
       })
       .otherwise({
         redirectTo: '/'

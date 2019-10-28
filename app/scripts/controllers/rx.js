@@ -8,6 +8,33 @@
  * Controller of the infernoApp
  */
 angular.module('infernoApp')
+    .directive('xelement', function ($timeout) {
+      return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+          element.ready(function () {
+            var height,
+                width;
+            $timeout(function () {
+              height  = element[0].offsetHeight;
+              width  = element[0].offsetWidth;
+              if (attrs.key) {
+                scope[attrs.key] = {
+                  height: height,
+                  width: width
+                };
+                return;
+              }
+
+              scope.elementSize = {
+                height: height,
+                width: width
+              };
+            });
+          });
+        }
+      };
+    })
   .filter('myCantoFilter', function() {
             return function(items, query ) {
                 var filtered = [];
@@ -43,14 +70,8 @@ angular.module('infernoApp')
   })
   .controller('RxCtrl', function ($scope, $http, $filter) {
 
-$scope.elements = [
-    {content: 'one'},
-    {content: '<b>two</b>'},
-    {content: '<img src="https://a.wattpad.com/useravatar/Chaton-ambulant.128.910704.jpg"/>'}
-  ];
-
        $scope.isNullOrEmpty = function (value) {
-                return value == null || value === "";
+          return value == null || value === "";
        }
    
        $scope.comments = JSON.parse(localStorage.getItem("myComments")) || [];
@@ -78,10 +99,11 @@ $scope.elements = [
        var url = '/inferno.txt';
        var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
        $http.get(url2).then(function (rsp) {
-            
+            var usingBreaker = true; 
             $scope.inferno = rsp.data.split(/\r?\n/) ;
-        
-            $scope.inferno.forEach($scope.buildone); 
+            for(var i = 0; i < $scope.inferno.length; i++) {
+               $scope.buildone($scope.inferno[i], i, usingBreaker);
+            } 
             if(temp.length > 0) {   
                 $scope.cantoes.push({line: counter-1, text: temp.join('<br>')}); 
             }  
@@ -142,7 +164,11 @@ $scope.elements = [
 
         }    
 
-        $scope.buildone = function(item, index) {
+        $scope.buildone = function(item, index, useBreaker) {
+            var withBreaker = ' ';
+            if(useBreaker) {
+                withBreaker='<br>';
+            }
             if(item.trim().length > 0) {
                 var exp = /^##/;
                 if (exp.test(item)) {
@@ -150,7 +176,7 @@ $scope.elements = [
                          $scope.cantoes.push({
                               name: name,
                               line: counter, 
-                              text: temp.join('<br>'), 
+                              text: temp.join(withBreaker), 
                               visible: true});   
                          temp = [];
                    }     
@@ -165,7 +191,7 @@ $scope.elements = [
                       $scope.cantoes.push({
                             name: name,
                             line: counter-2, 
-                            text: temp.join('<br>'), 
+                            text: temp.join(withBreaker), 
                             visible: true});   
                       temp = [];
                 }
