@@ -69,6 +69,11 @@ angular.module('infernoApp')
     }
   })
   .controller('RxCtrl', function ($scope, $http, $filter) {
+       $scope.opt = localStorage.getItem("myOpt");
+       if($scope.opt == null){
+            $scope.opt = "pinsky";
+            localStorage.setItem("myOpt", $scope.opt);
+        }
 
        $scope.isNullOrEmpty = function (value) {
           return value == null || value === "";
@@ -98,6 +103,11 @@ angular.module('infernoApp')
        var name = "";
        var url = '/inferno.txt';
        var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
+       var url3 = 'https://dsmarkchen.github.io/inferno/infernopinsky.txt';
+
+       if($scope.opt == "pinsky") {
+            url2 = url3;
+       } 
        $http.get(url2).then(function (rsp) {
             var usingBreaker = true; 
             $scope.inferno = rsp.data.split(/\r?\n/) ;

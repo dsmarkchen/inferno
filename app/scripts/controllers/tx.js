@@ -9,6 +9,17 @@
  */
 angular.module('infernoApp')
   .controller('TxCtrl', function ($http, $scope, fileReader) {
+     
+    $scope.opt = localStorage.getItem("myOpt");
+    if($scope.opt == null){
+         $scope.opt = "pinsky";
+         localStorage.setItem("myOpt", $scope.opt);
+   }
+
+
+   $scope.change = function() {
+      localStorage.setItem("myOpt", $scope.opt);
+   }
 
    $scope.isNullOrEmpty = function (value) {
         return value == null || value === "";
