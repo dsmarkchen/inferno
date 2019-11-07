@@ -1,5 +1,15 @@
 <div class="container">
 
+  <form>
+    <label class="radio-inline">
+      <input type="radio" ng-model="opt" value="default" ng-change="change()">Default
+    </label>
+    <label class="radio-inline">
+      <input type="radio" ng-model="opt" value="pinsky" ng-change="change()">Pinsky
+    </label>
+    <tt>opt = {{opt}}</tt><br/>
+  </form>
+
 
    <table>
    <tr ng-repeat="comment in comments track by $index">
@@ -11,15 +21,6 @@
    </table>
 </div>
 
-<form>
-    <label class="radio-inline">
-      <input type="radio" ng-model="opt" value="default" ng-change="change()">Default
-    </label>
-    <label class="radio-inline">
-      <input type="radio" ng-model="opt" value="pinsky" ng-change="change()">Pinsky
-    </label>
-<tt>opt = {{opt}}</tt><br/>
-  </form>
 
  <div class="form-group" >
             <label for="addComment">Conto</label>
