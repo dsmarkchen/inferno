@@ -18,9 +18,11 @@
         </div>
         <div class="row">
           <div class="col">
- 
-            <button class="btn btn-secondary" ng-click="prev()"> prev</button>
-            <button class="btn btn-secondary" ng-click="next()"> next</button>
+            <form>
+              <button class="btn btn-secondary" ng-click="prev()"> prev</button> 
+
+              <button class="btn btn-secondary" ng-click="next()"> next</button>
+            </form>
           </div>
         </div>
      </div>
@@ -32,14 +34,14 @@
               <div class="col-1" style="margin:0px 0px 0px 0px;padding:0px 0px; border: 1px solid #f8f9fa;">
                   <p class="line" style="margin:0px 0px 0px 0px;padding:0px 0px;background-color:#f8f9fa;">{{canto.name}}:{{canto.line}} </p>
               </div>
-              <div class="col-11" >
+              <div class="col-11" style="padding-left:1px;padding-right:1px">
              <!--
                   <div xelement>
                     <p ng-if="elementSize.width > 100 && $index == 0" >The element width: {{elementSize.width}}.</p>
                   </div>
               -->
 
-                  <p class="canto" style="padding:0px 15px;" ng-bind-html='canto.text'></p>
+                  <p class="canto" style="background-color:lavender;margin-left:0;width:100%;" ng-bind-html='canto.text'></p>
               </div>    
             </div>
        </div>
