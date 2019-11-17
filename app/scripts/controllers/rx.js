@@ -104,8 +104,11 @@ angular.module('infernoApp')
        var url = '/inferno.txt';
        var url2 = 'https://dsmarkchen.github.io/inferno/inferno.txt';
        var url3 = 'https://dsmarkchen.github.io/inferno/infernopinsky.txt';
+       var url4 = 'https://dsmarkchen.github.io/inferno/infernobang.txt';
 
-       if($scope.opt == "pinsky") {
+       if($scope.opt == "bang") {
+            url2 = url4;
+       }if($scope.opt == "pinsky") {
             url2 = url3;
        } 
        $http.get(url2).then(function (rsp) {
